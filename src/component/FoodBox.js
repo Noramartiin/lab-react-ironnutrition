@@ -7,7 +7,7 @@ class FoodBox extends Component {
 
   handleQuantity = (event) => {
     this.setState({
-      quantity: event.target.value,
+      quantity: Number(event.target.value),
     });
   };
 
@@ -36,6 +36,7 @@ class FoodBox extends Component {
                   onChange={this.handleQuantity}
                   className="input"
                   type="number"
+                  value={this.state.quantity}
                 />
               </div>
               <div className="control">

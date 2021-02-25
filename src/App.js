@@ -35,7 +35,7 @@ class App extends Component {
     this.setState({
       showForm: false,
       foods: [newItem, ...this.state.foods],
-      filteredFood: [...newItem, ...this.state.filteredFood],
+      filteredFood: [newItem, ...this.state.filteredFood],
     });
   };
 
@@ -55,7 +55,7 @@ class App extends Component {
       let myItem={
         name: foods.name,
         calories: foods.calories,
-        quantity: foods.quantity
+        quantity: quantity
       }
       this.setState({
         totalItems:[...this.state.totalItems, myItem]
@@ -73,7 +73,7 @@ class App extends Component {
         )}
         <Search change={this.handleSearch} />
         {filteredFood.map((singleFood, index) => {
-          return <FoodBox key={index} foods={singleFood} onItemAdd={this.handleAddItem}/>;
+          return <FoodBox key={singleFood.name} foods={singleFood} onItemAdd={this.handleAddItem}/>;
         })}
         <TodaysFood items={totalItems} />
       </div>

@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 
 class TodaysFood extends Component {
-
   render() {
-    const {items} = this.props
-    let total = 0
+    const { items } = this.props;
+    let total = items.reduce((acc, food) => {
+      return acc + food.calories * food.quantity;
+    }, 0);
+
     return (
       <div>
         <h1>TOTAL</h1>
         {this.props.items.map((singleItem) => {
           return (
             <div>
-              {singleItem.name} {singleItem.calories} {singleItem.quantity}=
-              {singleItem.calories} * {singleItem.quantity}
+              {singleItem.quantity} {singleItem.name} =
+              {singleItem.calories * singleItem.quantity}
             </div>
           );
         })}
-        <div>Final Total is: {total}</div>
+        <div>Total cal are = {total}</div>
       </div>
     );
   }
